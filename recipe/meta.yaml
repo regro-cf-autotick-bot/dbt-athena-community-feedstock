@@ -1,13 +1,13 @@
 {% set name = "dbt-athena-community" %}
-{% set version = "1.7.2" %}
+{% set version = "1.8.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dbt-athena-community-{{ version }}.tar.gz
-  sha256: 3e705315de100be0ffa79f6618ac2f6e388940cb601b7b00d5989583cce1dcef
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 5005bf04e89eb115ab895b11a89ad40820811024d38dd255f50abd5dce96724e
 
 build:
   noarch: python
