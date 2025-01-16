@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dbt-athena-community-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/dbt-athena-community-{{ version }}.tar.gz
   sha256: 3e705315de100be0ffa79f6618ac2f6e388940cb601b7b00d5989583cce1dcef
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - boto3 >=1.34,<2.dev0
     - boto3-stubs >=1.34,<2.dev0
     - dbt-core >=1.7.0,<1.8.dev0
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/dbt-athena/dbt-athena
